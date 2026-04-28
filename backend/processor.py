@@ -1,8 +1,7 @@
 import spacy
 from spacy.matcher import Matcher
 import en_core_web_sm
-from transformers import pipeline
-import torch
+# Transformers and torch removed for Vercel deployment size limits
 import re
 
 class NLPProcessor:
@@ -38,20 +37,8 @@ class NLPProcessor:
         if len(text.split()) < 30:
             return text # Too short to summarize
             
-        try:
-            if self.summarizer is None:
-                # Use a lightweight model for speed and memory efficiency
-                self.summarizer = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6", device=-1)
-            
-            # Limit input length for transformer
-            max_input = 1024
-            truncated_text = text[:max_input]
-            
-            summary = self.summarizer(truncated_text, max_length=60, min_length=20, do_sample=False)
-            return summary[0]['summary_text']
-        except Exception as e:
-            print(f"Transformer error: {e}. Falling back to extractive summarization.")
-            return self._extractive_summary(text)
+        # Force extractive summarization due to Vercel deployment size limits
+        return self._extractive_summary(text)
 
     def _extractive_summary(self, text, num_sentences=3):
         """Simple frequency-based extractive summarization."""
