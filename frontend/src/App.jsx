@@ -212,7 +212,7 @@ const AnalysisSuite = ({ results, loading, error, inputText, setInputText, handl
               <h3 className="serif">Strategic Highlights</h3>
               <span className="key-insights-label">Key Insights</span>
             </div>
-            <div className="grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
+            <div className="insights-grid">
               {results.key_points.map((point, i) => (
                 <div key={i} className="highlight-item">
                   <div className="highlight-icon"><Sparkle size={24} color="#cba135" /></div>
@@ -264,7 +264,7 @@ const AnalysisSuite = ({ results, loading, error, inputText, setInputText, handl
             </div>
 
             {/* Concierge Support Section (Reused from landing but styled for dashboard) */}
-            <section className="methodology-section" style={{ marginTop: '10rem', gridTemplateColumns: '1.5fr 1fr', gap: '2rem' }}>
+            <section className="methodology-section concierge-section">
               <div className="method-visual" style={{ 
                 height: '400px',
                 backgroundImage: 'linear-gradient(to top, #000, transparent), url(/office.png)',
@@ -323,7 +323,7 @@ function App() {
   return (
     <div className="app-container">
       {/* Navbar */}
-      <nav className="navbar" style={{ padding: '2rem 4rem' }}>
+      <nav className="navbar custom-nav-padding">
         <div className="logo" style={{ cursor: 'pointer' }} onClick={() => setView('landing')}>
           SmartMeet AI
         </div>
