@@ -1,5 +1,6 @@
 import spacy
 from spacy.matcher import Matcher
+import en_core_web_sm
 # Transformers and torch removed for Vercel deployment size limits
 import re
 
@@ -7,7 +8,7 @@ class NLPProcessor:
     def __init__(self):
         # Load spaCy model
         # Load spaCy model (installed via requirements.txt for Vercel)
-        self.nlp = spacy.load("en_core_web_sm")
+        self.nlp = en_core_web_sm.load()
         
         # Initialize Matcher for Action Items
         self.matcher = Matcher(self.nlp.vocab)
