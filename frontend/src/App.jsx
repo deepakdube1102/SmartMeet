@@ -17,7 +17,7 @@ import {
   Fingerprint
 } from 'lucide-react';
 
-const API_URL = "http://localhost:8001";
+const API_URL = import.meta.env.PROD ? "/_/backend" : "http://localhost:8001";
 
 const SAMPLES = [
   "The strategic alignment focused on global expansion initiatives, prioritizing the integration of sustainable procurement frameworks while simultaneously de-risking secondary supply chains through localized intelligence networks.",
